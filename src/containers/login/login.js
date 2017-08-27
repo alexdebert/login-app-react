@@ -1,10 +1,8 @@
 import React from 'react';
+import Form from '../../components/form/form';
 
 const Login = () => (
-    <div>
-        <h1>Login</h1>
-        <p>Welcome</p>
-    </div>
+    <Form />
 );
 
 export default Login;

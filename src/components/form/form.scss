@@ -1,0 +1,30 @@
+.form-container {
+  margin: 1% auto;;
+  width: 50%;
+  height: 75%;
+  border: 1px solid #cfd3d3;
+  border-radius: 5px;
+  -webkit-box-shadow: 4px 4px 13px 1px rgba(0,0,0,0.24);
+  -moz-box-shadow: 4px 4px 13px 1px rgba(0,0,0,0.24);
+  box-shadow: 4px 4px 13px 1px rgba(0,0,0,0.24);
+
+  form {
+    height: 100%;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+    h1 {
+      max-height: 20%;
+      margin: auto;
+      background: #37cccc;
+      color: white;
+    }
+
+    fieldset {
+      border: none;
+      margin: 2% auto;
+    }
+  }
+
+}
