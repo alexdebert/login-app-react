@@ -1,19 +1,27 @@
 import React from 'react';
 
+import Fieldset from './fieldset/fieldset';
+
 import './form.scss';
 
 const Form = () => (
     <div className="form-container">
         <form >
             <h1>Login</h1>
-            <fieldset>
-                <label htmlFor="user-name">Username</label><br/>
-                <input id="user-name" type="text" placeholder="Username"></input>
-            </fieldset>
-            <fieldset>
-                <label htmlFor="user-password">Password</label><br/>
-                <input id="user-password" type="text" placeholder="Password"></input>
-            </fieldset>
+            <Fieldset 
+                htmlFor={'user-name'}
+                label={'Username'}
+                inputId={'user-name'}
+                inputType={'text'}
+                placeholder={'Username'}
+            />
+            <Fieldset 
+                htmlFor={'user-password'}
+                label={'Password'}
+                inputId={'user-password'}
+                inputType={'text'}
+                placeholder={'Password'}
+            />
             <select id="user-airline">
                 <option value="LATAM">LATAM</option>
                 <option value="AA">AA</option>
