@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Fieldset from './fieldset/fieldset';
+import Fieldset from '../fieldset/fieldset';
 
 import './form.scss';
 
