@@ -1,10 +1,10 @@
 import React from 'react';
-
 import Fieldset from '../fieldset/fieldset';
 
-import './form.scss';
+import './loginForm.scss';
 
-const Form = () => (
+
+const LoginForm = () => (
     <div className="form-container">
         <form >
             <h1>Login</h1>
@@ -32,4 +32,4 @@ const Form = () => (
     </div>
 );
 
-export default Form;
+export default LoginForm;
