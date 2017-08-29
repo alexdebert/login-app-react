@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+
 import Fieldset from '../fieldset/fieldset';
 import Select from '../select/select';
+import Button from '../button/button';
 
 import './loginForm.scss';
 
@@ -14,22 +16,27 @@ class LoginForm extends Component {
             airlineSelection: ''
         };
         this.handleAirlineSelect = this.handleAirlineSelect.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     componentDidMount() {
         axios.get('https://beta.id90travel.com/airlines')
             .then((response) => {
                 this.setState({
-                    airlineOptions: response.data,
+                    airlineOptions: response.data
                 });
             })
             .catch((error) => {
-                alert(error);
+                alert('There has been an error, please try again later' + error);
             });
     }
 
     handleAirlineSelect(e) {
         this.setState({ airlineSelection: e.target.value });
+    }
+
+    handleFormSubmit(){
+    //TODO
     }
 
     render() {
@@ -55,7 +62,11 @@ class LoginForm extends Component {
                         controlFunc={this.handleAirlineSelect}
                         options={this.state.airlineOptions}
                         selectedOption={this.state.airlineSelection} />
-                    <button>SUBMIT</button>
+                    <Button
+                        buttonClassName={'button-submit'}
+                        buttonType={'submit'}
+                        controlFunc={this.handleFormSubmit}
+                        buttonLabel={'Submit'}/>
                 </form>
             </div>
         );

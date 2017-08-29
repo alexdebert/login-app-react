@@ -15,7 +15,7 @@ For this project I will use the technologies mentioned below :
 - cd login-app-react
 - npm install
 - npm start
-- The project will run in this page: http://localhost:8080/
+- The project will run in this page: http://localhost:8100/
 
 
 ## Run the tests

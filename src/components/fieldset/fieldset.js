@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 const Fieldset = (props) => (
     <fieldset>
         <label htmlFor={props.htmlFor}>{props.label}</label><br/>
-        <input id={props.inputId} type={props.inputType} placeholder={props.placeholder} />
+        <input id={props.inputId}
+            type={props.inputType}
+            placeholder={props.placeholder}/>
     </fieldset>
 );
 
