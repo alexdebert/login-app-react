@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import Fieldset from '../fieldset/fieldset';
 import Select from '../select/select';
 
@@ -9,24 +10,26 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            airlineOptions: []
+            airlineOptions: [],
+            airlineSelection: ''
         };
         this.handleAirlineSelect = this.handleAirlineSelect.bind(this);
-        //this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     componentDidMount() {
-        fetch('https://beta.id90travel.com/airlines')
-            .then(res => res.json())
-            .then(data => {
+        axios.get('https://beta.id90travel.com/airlines')
+            .then((response) => {
                 this.setState({
-                    airlineOptions: data.display_name
+                    airlineOptions: response.data,
                 });
+            })
+            .catch((error) => {
+                alert(error);
             });
     }
 
     handleAirlineSelect(e) {
-        this.setState({ ownerAgeRangeSelection: e.target.value });
+        this.setState({ airlineSelection: e.target.value });
     }
 
     render() {
@@ -39,19 +42,19 @@ class LoginForm extends Component {
                         label={'Username'}
                         inputId={'user-name'}
                         inputType={'text'}
-                        placeholder={'Insert your username'}/>
+                        placeholder={'Username'}/>
                     <Fieldset
                         htmlFor={'user-password'}
                         label={'Password'}
                         inputId={'user-password'}
                         inputType={'text'}
-                        placeholder={'Insert your password'}/>
+                        placeholder={'Password'}/>
                     <Select
                         name={'airline'}
                         placeholder={'Choose your Airline'}
                         controlFunc={this.handleAirlineSelect}
                         options={this.state.airlineOptions}
-                        selectedOption={this.state.ownerAgeRangeSelection} />
+                        selectedOption={this.state.airlineSelection} />
                     <button>SUBMIT</button>
                 </form>
             </div>
