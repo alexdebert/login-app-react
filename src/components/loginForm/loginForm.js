@@ -13,10 +13,15 @@ class LoginForm extends Component {
         super(props);
         this.state = {
             airlineOptions: [],
-            airlineSelection: ''
+            airlineSelection: '',
+            passwordValue:'',
+            usernameValue:''
         };
         this.handleAirlineSelect = this.handleAirlineSelect.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handlePasswordValue = this.handlePasswordValue.bind(this);
+        this.handleUsernameValue = this.handleUsernameValue.bind(this);
+        this.handleRememberCheckbox = this.handleRememberCheckbox.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +40,18 @@ class LoginForm extends Component {
         this.setState({ airlineSelection: e.target.value });
     }
 
+    handlePasswordValue(e){
+        this.setState({ passwordValue: e.target.value });
+    }
+
+    handleUsernameValue(e){
+        this.setState({ usernameValue: e.target.value });
+    }
+
+    handleRememberCheckbox(){
+        //TODO
+    }
+
     handleFormSubmit(){
     //TODO
     }
@@ -49,19 +66,32 @@ class LoginForm extends Component {
                         label={'Username'}
                         inputId={'user-name'}
                         inputType={'text'}
-                        placeholder={'Username'}/>
+                        placeholder={'Username'}
+                        inputClassName={'login-input'}
+                        inputValue={this.state.usernameValue}
+                        controlFunc={this.handleUsernameValue}/>
                     <Fieldset
                         htmlFor={'user-password'}
                         label={'Password'}
                         inputId={'user-password'}
                         inputType={'text'}
-                        placeholder={'Password'}/>
+                        placeholder={'Password'}
+                        inputClassName={'login-input'}
+                        inputValue={this.state.passwordValue}
+                        controlFunc={this.handlePasswordValue}/>
                     <Select
                         name={'airline'}
                         placeholder={'Choose your Airline'}
                         controlFunc={this.handleAirlineSelect}
                         options={this.state.airlineOptions}
                         selectedOption={this.state.airlineSelection} />
+                    <Fieldset
+                        htmlFor={'login-remember'}
+                        label={'Remember Me'}
+                        inputId={'login-remember'}
+                        inputType={'checkbox'}
+                        inputClassName={'login-checkbox'}
+                        controlFunc={this.handleRememberCheckbox}/>
                     <Button
                         buttonClassName={'button-submit'}
                         buttonType={'submit'}
