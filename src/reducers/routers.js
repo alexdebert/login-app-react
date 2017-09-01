@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import airlines from './airlineReducer';
 
-export default combineReducers({
-    routing: routerReducer
+const routers =  combineReducers({
+    airlines
 });
+
+export default routers;

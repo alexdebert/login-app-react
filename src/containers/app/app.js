@@ -1,13 +1,20 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import Login from '../login/login';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import './app.scss';
 
-const App = () => (
-    <main id='main-container'>
-        <Route exact path="/" component={Login} />
-    </main>
-);
+class App extends Component {  
+    render() {
+        return (
+            <div id="app-container">
+                {this.props.children}
+            </div>
+        );
+    }
+}
 
-export default App;
+App.propTypes = {  
+    children: PropTypes.object.isRequired
+};
+
+export default App;  
