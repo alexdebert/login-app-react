@@ -6,7 +6,7 @@ const Select = (props) => (
         <select
             name={props.name}
             value={props.selectedOption}
-            onChange={props.controlFunc}>
+            onChange={props.onChange}>
             <option value="">{props.placeholder}</option>
             {props.options.map(opt => {
                 return (
@@ -23,7 +23,7 @@ Select.propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.array.isRequired,
     selectedOption: PropTypes.string,
-    controlFunc: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string
 };
 
