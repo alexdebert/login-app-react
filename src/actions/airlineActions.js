@@ -1,29 +1,8 @@
-//import airlineApi from '../api/airlineApi';
-//
-//export function loadAirlines() {
-//    return function(dispatch) {
-//        return airlineApi.getAllAirlines().then(airlines => {
-//            dispatch(loadAirlinesSuccess(airlines));
-//        }).catch(error => {
-//            throw(error);
-//        });
-//    };
-//}
-
-import axios from 'axios';
 import * as types from './types';
+import { createAction } from 'redux-actions';
+import * as airlinesApi from '../api/airlines';
 
-export function getAirlines() {
-    return function(dispatch) {
-        axios.get('https://beta.id90travel.com/airlines')
-            .then(response => {
-                dispatch({
-                    type: types.AIRLINES_LOADED,
-                    payload: response.data
-                });
-            })
-            .catch((error) => {
-                throw(error);
-            });
-    };
-}
+export const getAirlines = createAction(types.AIRLINES_LOAD, () => {
+    const promise = airlinesApi.getAirlines();
+    return { promise };
+});

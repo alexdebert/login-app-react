@@ -1,2 +1,2 @@
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
-export const AIRLINES_LOADED = 'AIRLINES_LOADED';
+export const AIRLINES_LOAD = 'AIRLINES_LOAD';

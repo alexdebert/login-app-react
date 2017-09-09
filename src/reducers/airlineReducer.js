@@ -1,13 +1,15 @@
-import * as types from '../actions/types';
-import initialState from './initialState';
+//import * as types from '../actions/types';
+import { handleActions } from 'redux-actions';
 
-export default function (state = initialState.airlines, action) {
-    switch(action.type) {
-    case types.AIRLINES_LOADED:
-        return {
-            ...state,
-            airlines: action.payload.airlines
-        };
-    }
-    return state;
-}
+const initialState = {
+    airlinesList: []
+};
+
+export default handleActions ({
+    ['AIRLINES_LOAD_FULFILLED']: (state, action) => ({
+        ...state,
+        //use lodash get
+        //_.get(action, 'payload.data', [])
+        airlinesList: action.payload.data
+    })
+}, initialState);
