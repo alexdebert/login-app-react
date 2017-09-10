@@ -1,37 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({name, label, onChange, placeholder, value, error, type='text'}) => {
-    let wrapperClass = 'form-group';
-    if (error && error.length > 0) {
-        wrapperClass += '' + 'has-error';
-    }
-
+const Input = (props) => {
     return (
-        <div className={wrapperClass}>
-            <label htmlFor={name}>{label}</label>
+        <div>
+            <label htmlFor={props.name}>{props.label}</label>
             <div className="field">
                 <input
-                    type={type}
-                    name={name}
-                    className="form-control"
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={onChange}/>
-                {error && <div className="alert alert-danger">{error}</div>}
+                    type={props.type}
+                    name={props.name}
+                    placeholder={props.placeholder}
+                    value={props.value}
+                    checked={props.checked}
+                    onChange={props.onChange}/>
             </div>
         </div>
     );
 };
 
 Input.propTypes = {
-    type: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
+    type: PropTypes.oneOf(['text', 'submit', 'password', 'checkbox']).isRequired,
+    name: PropTypes.string,
+    label: PropTypes.string,
+    onChange: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.string,
-    error: PropTypes.string
+    checked: PropTypes.number
 };
 
 export default Input;

@@ -8,8 +8,7 @@ export function* updateAfterAuthSuccess() {
     //localStorage.setItem('jwtToken', auth.user.token)
 
     //yield put(setToken(auth.user.token))
-    //yield put(redirect('/admin'))
-    debugger;
+
     yield put(push('/search-hotel'));
 }
 

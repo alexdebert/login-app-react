@@ -7,7 +7,7 @@ import { handleActions } from 'redux-actions';
 
 export default handleActions ({
     ['AUTH.LOGIN_FULFILLED']: (state, action) => {
-        push('/search-hotel')
-        return state;
+        push('/search-hotel');
+        return state
     }
 }, initialState);
