@@ -15,13 +15,13 @@ class Login extends Component {
         this.state = {
             user:
             {
-                username: 'hauser',
-                password: '1234',
-                airline: 'HAWAIIAN AIRLINES (HA)',
+                username: '',
+                password: '',
+                airline: '',
                 remember: 1
             }
         };
-        //this.onChange = this.onChange.bind(this);
+        this.onChange = this.onChange.bind(this);
         //this.onSave = this.onSave.bind(this);
     }
 
@@ -29,12 +29,12 @@ class Login extends Component {
         this.props.getAirlines();
     }
 
-    //onChange(event) {
-    //    const field = event.target.name;
-    //    const credentials = this.state.credentials;
-    //    credentials[field] = event.target.value;
-    //    return this.setState({credentials: credentials});
-    //}
+    onChange(event) {
+        const field = event.target.name;
+        const user = this.state.user;
+        user[field] = event.target.value;
+        return this.setState({user});
+    }
     //
     //onSave(event) {
     //    event.preventDefault();
@@ -47,17 +47,20 @@ class Login extends Component {
                 <form onSubmit={(event) => {event.preventDefault(); this.props.submitLogin(this.state.user);}}>
                     <h1>Login</h1>
                     <Input
-                        name="email"
-                        label="email"
-                        value={this.state.user.username}/>
+                        name="username"
+                        label="username"
+                        value={this.state.user.username}
+                        onChange={this.onChange}/>
                     <Input
                         name="password"
                         label="password"
                         type="password"
-                        value={this.state.user.password}/>
+                        value={this.state.user.password}
+                        onChange={this.onChange}/>
                     <Select
                         name={'airline'}
                         placeholder={'Choose your Airline'}
+                        onChange={this.onChange}
                         options={this.props.airlinesList} />
                     <input
                         value="Log In"
