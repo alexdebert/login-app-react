@@ -17,9 +17,9 @@ const enhancers = [];
 const middleware = [
     thunk,
     routerMiddleware(history),
-    logger,
     promiseMiddleware(),
-    sagaMiddleware
+    sagaMiddleware,
+    logger
 ];
 
 if (process.env.NODE_ENV === 'development') {

@@ -19,7 +19,8 @@ class Login extends Component {
                 password: '',
                 airline: '',
                 remember: 0
-            }
+            },
+            isChecked: false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -42,8 +43,11 @@ class Login extends Component {
         this.props.submitLogin(this.state.user);
     }
 
-    handleCheckbox (event) {
-        console.log(event.target);
+    handleCheckbox () {
+        const user = this.state.user;
+        const isChecked = !this.state.isChecked;
+        user.remember = isChecked ? 1 : 0;
+        this.setState({user, isChecked});
     }
 
     render() {
@@ -73,7 +77,8 @@ class Login extends Component {
                         label={'Remember me'}
                         type={'checkbox'}
                         onChange={this.handleCheckbox}
-                        checked = {this.state.user.remember}/>
+                        value={this.state.remember}
+                        checked={this.state.isChecked}/>
                     <Input
                         type={'submit'}
                         value={'Log In'}/>
