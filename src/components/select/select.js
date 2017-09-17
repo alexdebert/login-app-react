@@ -22,8 +22,7 @@ Select.propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.array.isRequired,
     selectedOption: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    placeholder: PropTypes.string
+    onChange: PropTypes.func.isRequired
 };
 
 export default Select;

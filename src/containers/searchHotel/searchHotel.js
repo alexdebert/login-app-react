@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 import { submitSearch } from '../../actions/searchHotel';
 
@@ -14,21 +18,36 @@ class SearchHotel extends Component {
         this.state = {
             search:{
                 destination: '',
-                checkin:'',
-                checkout:'',
-                guests: [],
-                rooms:[],
-                currency:[]
+                checkin: moment(),
+                checkout: moment(),
+                guests: '',
+                rooms:'',
+                currency:''
             }
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleChangeStart = this.handleChangeStart.bind(this);
+        this.handleChangeEnd = this.handleChangeEnd.bind(this);
     }
 
     onChange(event) {
         const field = event.target.name;
         const search = this.state.search;
         search[field] = event.target.value;
+        return this.setState({search});
+    }
+
+    handleChangeStart(date) {
+        var search = this.state.search;
+        search.checkin = date;
+        search.checkout = date;
+        return this.setState({search});
+    }
+
+    handleChangeEnd(date) {
+        var search = this.state.search;
+        search.checkout = date;
         return this.setState({search});
     }
 
@@ -50,18 +69,20 @@ class SearchHotel extends Component {
                         label={'Destination'}
                         value={this.state.search.destination}
                         onChange={this.onChange}/>
-                    <Input
-                        name={'checkin'}
-                        label={'Check-in'}
-                        type={'text'}
-                        value={this.state.search.checkin}
-                        onChange={this.onChange}/>
-                    <Input
-                        name={'checkout'}
-                        label={'Check-out'}
-                        type={'text'}
-                        value={this.state.search.checkout}
-                        onChange={this.onChange}/>
+                    <label htmlFor={'checkin'}>{'Check In'}</label>
+                    <DatePicker
+                        minDate = {moment()}
+                        selected={this.state.search.checkin}
+                        selectsStart
+                        startDate={this.state.search.checkin}
+                        onChange={this.handleChangeStart}/>
+                    <label htmlFor={'checkout'}>{'Check Out'}</label>
+                    <DatePicker
+                        selected={this.state.search.checkout}
+                        selectsEnd
+                        startDate={this.state.search.checkin}
+                        endDate={this.state.search.checkout}
+                        onChange={this.handleChangeEnd}/>
                     <label htmlFor={'guests'}>{'Guests'}</label>
                     <Select
                         name={'guests'}
