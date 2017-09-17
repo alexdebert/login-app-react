@@ -7,7 +7,7 @@ import { getAirlines } from '../../actions/airlineActions';
 import { submitLogin } from '../../actions/auth';
 
 import Input from '../../components/input/input';
-import Select from '../../components/select/select';
+import SelectAirlines from '../../components/selectAirlines/selectAirlines';
 
 class Login extends Component {
     constructor(props) {
@@ -67,7 +67,7 @@ class Login extends Component {
                         type={'password'}
                         value={this.state.user.password}
                         onChange={this.onChange}/>
-                    <Select
+                    <SelectAirlines
                         name={'airline'}
                         placeholder={'Choose your Airline'}
                         onChange={this.onChange}

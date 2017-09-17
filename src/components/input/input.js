@@ -25,7 +25,7 @@ Input.propTypes = {
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.string,
-    checked: PropTypes.boolean
+    checked: PropTypes.bool
 };
 
 export default Input;
